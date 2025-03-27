@@ -1,13 +1,13 @@
-// ✅ Order Schema & Model (Ensure it uses "tuts" collection)
-const orderSchema = new mongoose.Schema(
-  {
-    name: String,
-    email: String,
-    address: String,
-    phone: String,
-    product: Object,
-  },
-  { collection: "tuts" } // ✅ Force MongoDB to use "tuts" collection
-);
+const mongoose = require("mongoose");
+
+const orderSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  address: { type: String, required: true },
+  phone: { type: String, required: true },
+  product: { type: Object, required: true }, // ✅ Ensure product is stored
+}, { timestamps: true });
 
 const Order = mongoose.model("Order", orderSchema);
+
+module.exports = Order;
